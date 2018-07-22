@@ -20,4 +20,9 @@ class JivoActionRepository
     {
         $this->em->persist($action);
     }
+
+    public function findForFilter(array $filter)
+    {
+        return $filter;
+    }
 }

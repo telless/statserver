@@ -2,26 +2,30 @@
 
 namespace App\Controller;
 
+use App\Repository\JivoActionRepository;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\FOSRestController as DefaultController;
+use FOS\RestBundle\Request\ParamFetcher;
+use FOS\RestBundle\View\View;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-
-class StatQueryController extends AbstractController
+class StatQueryController extends DefaultController
 {
-    /**
-     * @Route(methods={"GET"}, name="jivo_site_get_action", path="/stat/jivo", defaults={"_format"="json"})
-     */
-    public function jivoSiteSaveAction(Request $request)
-    {
+    private $jivoRepository;
 
+    public function __construct(JivoActionRepository $jivoRepository)
+    {
+        $this->jivoRepository = $jivoRepository;
     }
 
     /**
-     * @Route(methods={"GET"}, name="roi_stat_get_action", path="/stat/roi", defaults={"_format"="json"})
+     * @Rest\Get(name="jivo_site_get_action", path="/api/stat/jivo")
+     * @Rest\QueryParam(name="page", requirements="\d+", default="1")
+     * @Rest\View()
+     *
+     * @return View
      */
-    public function roiStatSaveAction(Request $request)
+    public function jivoSiteSaveAction(ParamFetcher $paramFetcher)
     {
-
+        return $this->view($this->jivoRepository->findForFilter($paramFetcher->all()))->setFormat('xml');
     }
 }

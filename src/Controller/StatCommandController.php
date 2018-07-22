@@ -2,38 +2,56 @@
 
 namespace App\Controller;
 
-use App\DTO\Jivo\JivoActionCommand;
-use App\DTO\Roi\RoiActionCommand;
+use App\Entity\JivoAction;
+use App\Repository\JivoActionRepository;
+use App\Repository\SyncState;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\FOSRestController as DefaultController;
+use FOS\RestBundle\View\View;
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class StatCommandController extends AbstractController
+class StatCommandController extends DefaultController
 {
     private $serializer;
+    private $jivoRepository;
+    private $syncState;
+    private $logger;
 
-    public function __construct(SerializerInterface $serializer)
-    {
+    public function __construct(
+        SerializerInterface $serializer,
+        JivoActionRepository $jivoRepository,
+        SyncState $syncState,
+        LoggerInterface $logger
+    ) {
         $this->serializer = $serializer;
+        $this->jivoRepository = $jivoRepository;
+        $this->syncState = $syncState;
+        $this->logger = $logger;
     }
 
     /**
-     * @Route(methods={"POST"}, name="jivo_site_save_action", path="/stat/jivo", defaults={"_format"="xml"})
-     * @ParamConverter("actionCommand", class="App\DTO\Jivo\JivoActionCommand")
+     * @Rest\View()
+     * @Rest\Post(name="jivo_site_save_action", path="/api/stat/jivo")
+     * @ParamConverter("actionCommand", converter="fos_rest.request_body")
+     *
+     * @param JivoAction $actionCommand
+     * @return View
      */
-    public function jivoSiteSaveAction(JivoActionCommand $actionCommand)
+    public function jivoSiteSaveAction(JivoAction $actionCommand)
     {
-        return $this->json($this->serializer->serialize($actionCommand, 'json'));
-    }
+        $this->jivoRepository->save($actionCommand);
+        try {
+            $this->syncState->call();
+        } catch (\Exception $e) {
+            $this->logger->critical($e->getMessage(), ['ctxt' => $actionCommand]);
 
-    /**
-     * @Route(methods={"POST"}, name="roi_stat_save_action", path="/stat/roi", defaults={"_format"="xml"})
-     * @ParamConverter("actionCommand", class="App\DTO\Roi\RoiActionCommand")
-     */
-    public function roiStatSaveAction(RoiActionCommand $actionCommand)
-    {
-        return $this->json($this->serializer->serialize($actionCommand, 'json'));
+            return $this->view(['result' => 'FAILURE'], Response::HTTP_BAD_REQUEST);
+        }
+
+        return $this->view(['result' => 'OK'], Response::HTTP_OK);
     }
 
 }
