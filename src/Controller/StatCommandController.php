@@ -48,10 +48,10 @@ class StatCommandController extends DefaultController
         } catch (\Exception $e) {
             $this->logger->critical($e->getMessage(), ['ctxt' => $actionCommand]);
 
-            return $this->view(['result' => 'FAILURE'], Response::HTTP_BAD_REQUEST);
+            return $this->view(['result' => 'FAILURE'], Response::HTTP_OK)->setFormat('json');
         }
 
-        return $this->view(['result' => 'OK'], Response::HTTP_OK);
+        return $this->view(['result' => 'OK'], Response::HTTP_OK)->setFormat('json');
     }
 
 }
