@@ -19,13 +19,13 @@ class StatQueryController extends DefaultController
 
     /**
      * @Rest\Get(name="jivo_site_get_action", path="/api/stat/jivo")
-     * @Rest\QueryParam(name="page", requirements="\d+", default="1")
+     * @Rest\QueryParam(name="offset", requirements="\d+", default="0")
      * @Rest\View()
      *
      * @return View
      */
     public function jivoSiteSaveAction(ParamFetcher $paramFetcher)
     {
-        return $this->view($this->jivoRepository->findForFilter($paramFetcher->all()))->setFormat('xml');
+        return $this->view($this->jivoRepository->findForFilter($paramFetcher->get('offset')))->setFormat('xml');
     }
 }

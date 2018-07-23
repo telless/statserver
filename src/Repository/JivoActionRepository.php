@@ -4,10 +4,12 @@ namespace App\Repository;
 
 use App\Entity\JivoAction;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 
 class JivoActionRepository
 {
     private $em;
+    /** @var EntityRepository */
     private $repo;
 
     public function __construct(EntityManagerInterface $em)
@@ -21,8 +23,11 @@ class JivoActionRepository
         $this->em->persist($action);
     }
 
-    public function findForFilter(array $filter)
+    public function findForFilter(int $offset)
     {
-        return $this->repo->findAll();
+        return $this->repo->createQueryBuilder('ja')
+            ->where('ja.id > :offset')
+            ->setParameter('offset', $offset)
+            ->getQuery()->getResult();
     }
 }
