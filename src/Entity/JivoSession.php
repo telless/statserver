@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Embeddable()
@@ -15,6 +16,8 @@ class JivoSession
      * @var JivoGeoIp
      *
      * @ORM\Embedded(class="App\Entity\JivoGeoIp")
+     *
+     * @JMS\Type("App\Entity\JivoGeoIp")
      */
     private $geoip;
 
@@ -24,6 +27,8 @@ class JivoSession
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $utm;
 
@@ -33,6 +38,8 @@ class JivoSession
      * @var array
      *
      * @ORM\Column(type="json")
+     *
+     * @JMS\Type("array<string, string>")
      */
     private $utmJson;
 
@@ -42,6 +49,8 @@ class JivoSession
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $ipAddr;
 
@@ -51,6 +60,8 @@ class JivoSession
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $userAgent;
 

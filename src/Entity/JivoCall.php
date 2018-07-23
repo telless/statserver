@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Embeddable()
@@ -15,6 +16,8 @@ class JivoCall
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $type;
     /**
@@ -23,6 +26,8 @@ class JivoCall
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $phone;
     /**
@@ -31,6 +36,8 @@ class JivoCall
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $status;
     /**
@@ -39,6 +46,8 @@ class JivoCall
      * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @JMS\Type("string")
      */
     private $reason;
     /**
@@ -47,6 +56,8 @@ class JivoCall
      * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @JMS\Type("string")
      */
     private $recordUrl;
 

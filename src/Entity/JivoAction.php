@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity()
@@ -14,6 +15,8 @@ class JivoAction
      *
      * @ORM\Id()
      * @ORM\Column(type="integer")
+     *
+     * @JMS\Type("integer")
      */
     private $id;
 
@@ -21,6 +24,8 @@ class JivoAction
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $eventName;
 
@@ -28,6 +33,8 @@ class JivoAction
      * @var string
      *
      * @ORM\Column(type="integer")
+     *
+     * @JMS\Type("integer")
      */
     private $chatId;
 
@@ -35,6 +42,8 @@ class JivoAction
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $widgetId;
 
@@ -42,6 +51,8 @@ class JivoAction
      * @var JivoVisitor
      *
      * @ORM\Embedded(class="App\Entity\JivoVisitor")
+     *
+     * @JMS\Type("App\Entity\JivoVisitor")
      */
     private $visitor;
 
@@ -49,6 +60,8 @@ class JivoAction
      * @var JivoAgent
      *
      * @ORM\Embedded(class="App\Entity\JivoAgent")
+     *
+     * @JMS\Type("App\Entity\JivoAgent")
      */
     private $agent;
 
@@ -56,6 +69,8 @@ class JivoAction
      * @var JivoDepartment
      *
      * @ORM\Embedded(class="App\Entity\JivoDepartment")
+     *
+     * @JMS\Type("App\Entity\JivoDepartment")
      */
     private $department;
 
@@ -63,6 +78,8 @@ class JivoAction
      * @var JivoSession
      *
      * @ORM\Embedded(class="App\Entity\JivoSession")
+     *
+     * @JMS\Type("App\Entity\JivoSession")
      */
     private $session;
 
@@ -70,6 +87,8 @@ class JivoAction
      * @var JivoPage
      *
      * @ORM\Embedded(class="App\Entity\JivoPage")
+     *
+     * @JMS\Type("App\Entity\JivoPage")
      */
     private $page;
 
@@ -77,6 +96,8 @@ class JivoAction
      * @var JivoCall
      *
      * @ORM\Embedded(class="App\Entity\JivoCall")
+     *
+     * @JMS\Type("App\Entity\JivoCall")
      */
     private $call;
 

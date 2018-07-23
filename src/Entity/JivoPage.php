@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Embeddable()
@@ -15,6 +16,8 @@ class JivoPage
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $url;
     /**
@@ -23,6 +26,8 @@ class JivoPage
      * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @JMS\Type("string")
      */
     private $title;
 

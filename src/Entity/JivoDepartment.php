@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Embeddable()
@@ -15,6 +16,8 @@ class JivoDepartment
      * @var int|null
      *
      * @ORM\Column(type="integer", nullable=true)
+     *
+     * @JMS\Type("integer")
      */
     private $id;
 
@@ -24,6 +27,8 @@ class JivoDepartment
      * @var string|null
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @JMS\Type("string")
      */
     private $name;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Embeddable()
@@ -15,6 +16,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $regionCode;
 
@@ -24,6 +27,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $country;
 
@@ -33,6 +38,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $countryCode;
 
@@ -42,6 +49,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $region;
 
@@ -51,6 +60,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $city;
 
@@ -60,6 +71,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $latitude;
 
@@ -69,6 +82,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $longitude;
 
@@ -78,6 +93,8 @@ class JivoGeoIp
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $organization;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Embeddable()
@@ -15,6 +16,8 @@ class JivoVisitor
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @JMS\Type("string")
      */
     private $name;
 
@@ -24,6 +27,8 @@ class JivoVisitor
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @JMS\Type("string")
      */
     private $email;
 
@@ -33,6 +38,8 @@ class JivoVisitor
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     *
+     * @JMS\Type("string")
      */
     private $phone;
 
@@ -42,6 +49,8 @@ class JivoVisitor
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $number;
 
@@ -51,6 +60,8 @@ class JivoVisitor
      * @var string
      *
      * @ORM\Column(type="string")
+     *
+     * @JMS\Type("string")
      */
     private $description;
 
@@ -60,6 +71,8 @@ class JivoVisitor
      * @var array
      *
      * @ORM\Column(type="json", nullable=true)
+     *
+     * @JMS\Type("array<string, string>")
      */
     private $social;
 
@@ -69,6 +82,8 @@ class JivoVisitor
      * @var int
      *
      * @ORM\Column(type="integer")
+     *
+     * @JMS\Type("integer")
      */
     private $chatsCount;
 
