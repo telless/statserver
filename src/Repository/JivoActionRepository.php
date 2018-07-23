@@ -23,6 +23,6 @@ class JivoActionRepository
 
     public function findForFilter(array $filter)
     {
-        return $filter;
+        return $this->repo->findAll();
     }
 }
