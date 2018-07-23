@@ -10,6 +10,7 @@ use FOS\RestBundle\Controller\FOSRestController as DefaultController;
 use FOS\RestBundle\View\View;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -40,13 +41,13 @@ class StatCommandController extends DefaultController
      * @param JivoAction $actionCommand
      * @return View
      */
-    public function jivoSiteSaveAction(JivoAction $actionCommand)
+    public function jivoSiteSaveAction(JivoAction $actionCommand, Request $request)
     {
         $this->jivoRepository->save($actionCommand);
         try {
             $this->syncState->call();
         } catch (\Exception $e) {
-            $this->logger->critical($e->getMessage(), ['ctxt' => $actionCommand]);
+            $this->logger->critical($e->getMessage(), ['ctxt' => $request->getContent()]);
 
             return $this->view(['result' => 'FAILURE'], Response::HTTP_OK)->setFormat('json');
         }

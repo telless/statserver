@@ -15,7 +15,7 @@ class JivoAgent
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -26,7 +26,7 @@ class JivoAgent
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -37,7 +37,7 @@ class JivoAgent
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -57,7 +57,7 @@ class JivoAgent
     /**
      * @return string
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -65,7 +65,7 @@ class JivoAgent
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -73,7 +73,7 @@ class JivoAgent
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }

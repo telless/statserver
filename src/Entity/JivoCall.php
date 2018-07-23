@@ -15,7 +15,7 @@ class JivoCall
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -25,7 +25,7 @@ class JivoCall
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -35,7 +35,7 @@ class JivoCall
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -64,7 +64,7 @@ class JivoCall
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -72,7 +72,7 @@ class JivoCall
     /**
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -80,7 +80,7 @@ class JivoCall
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }

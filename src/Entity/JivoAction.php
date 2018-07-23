@@ -15,7 +15,7 @@ class JivoAction
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      *
      * @JMS\Type("integer")
      */
@@ -24,7 +24,7 @@ class JivoAction
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -33,7 +33,7 @@ class JivoAction
     /**
      * @var string
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      *
      * @JMS\Type("integer")
      */
@@ -42,7 +42,7 @@ class JivoAction
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -113,7 +113,7 @@ class JivoAction
     /**
      * @return string
      */
-    public function getEventName(): string
+    public function getEventName(): ?string
     {
         return $this->eventName;
     }
@@ -121,7 +121,7 @@ class JivoAction
     /**
      * @return string
      */
-    public function getChatId(): string
+    public function getChatId(): ?string
     {
         return $this->chatId;
     }
@@ -129,7 +129,7 @@ class JivoAction
     /**
      * @return string
      */
-    public function getWidgetId(): string
+    public function getWidgetId(): ?string
     {
         return $this->widgetId;
     }
@@ -137,7 +137,7 @@ class JivoAction
     /**
      * @return JivoVisitor
      */
-    public function getVisitor(): JivoVisitor
+    public function getVisitor(): ?JivoVisitor
     {
         return $this->visitor;
     }
@@ -145,7 +145,7 @@ class JivoAction
     /**
      * @return JivoAgent
      */
-    public function getAgent(): JivoAgent
+    public function getAgent(): ?JivoAgent
     {
         return $this->agent;
     }
@@ -153,7 +153,7 @@ class JivoAction
     /**
      * @return JivoDepartment
      */
-    public function getDepartment(): JivoDepartment
+    public function getDepartment(): ?JivoDepartment
     {
         return $this->department;
     }
@@ -161,7 +161,7 @@ class JivoAction
     /**
      * @return JivoSession
      */
-    public function getSession(): JivoSession
+    public function getSession(): ?JivoSession
     {
         return $this->session;
     }
@@ -169,7 +169,7 @@ class JivoAction
     /**
      * @return JivoPage
      */
-    public function getPage(): JivoPage
+    public function getPage(): ?JivoPage
     {
         return $this->page;
     }
@@ -177,7 +177,7 @@ class JivoAction
     /**
      * @return JivoCall
      */
-    public function getCall(): JivoCall
+    public function getCall(): ?JivoCall
     {
         return $this->call;
     }

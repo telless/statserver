@@ -48,7 +48,7 @@ class JivoVisitor
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -59,7 +59,7 @@ class JivoVisitor
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -81,7 +81,7 @@ class JivoVisitor
      *
      * @var int
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      *
      * @JMS\Type("integer")
      */
@@ -90,7 +90,7 @@ class JivoVisitor
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -98,7 +98,7 @@ class JivoVisitor
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -106,7 +106,7 @@ class JivoVisitor
     /**
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -114,7 +114,7 @@ class JivoVisitor
     /**
      * @return string
      */
-    public function getNumber(): string
+    public function getNumber(): ?string
     {
         return $this->number;
     }
@@ -122,7 +122,7 @@ class JivoVisitor
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -130,7 +130,7 @@ class JivoVisitor
     /**
      * @return array
      */
-    public function getSocial(): array
+    public function getSocial(): ?array
     {
         return $this->social;
     }
@@ -138,7 +138,7 @@ class JivoVisitor
     /**
      * @return int
      */
-    public function getChatsCount(): int
+    public function getChatsCount(): ?int
     {
         return $this->chatsCount;
     }

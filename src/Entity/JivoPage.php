@@ -15,7 +15,7 @@ class JivoPage
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -34,7 +34,7 @@ class JivoPage
     /**
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }

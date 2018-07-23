@@ -26,7 +26,7 @@ class JivoSession
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -37,7 +37,7 @@ class JivoSession
      *
      * @var array
      *
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="json", nullable=true)
      *
      * @JMS\Type("array<string, string>")
      */
@@ -48,7 +48,7 @@ class JivoSession
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -59,7 +59,7 @@ class JivoSession
      *
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @JMS\Type("string")
      */
@@ -68,7 +68,7 @@ class JivoSession
     /**
      * @return JivoGeoIp
      */
-    public function getGeoip(): JivoGeoIp
+    public function getGeoip(): ?JivoGeoIp
     {
         return $this->geoip;
     }
@@ -76,7 +76,7 @@ class JivoSession
     /**
      * @return string
      */
-    public function getUtm(): string
+    public function getUtm(): ?string
     {
         return $this->utm;
     }
@@ -84,7 +84,7 @@ class JivoSession
     /**
      * @return array
      */
-    public function getUtmJson(): array
+    public function getUtmJson(): ?array
     {
         return $this->utmJson;
     }
@@ -92,7 +92,7 @@ class JivoSession
     /**
      * @return string
      */
-    public function getIpAddr(): string
+    public function getIpAddr(): ?string
     {
         return $this->ipAddr;
     }
@@ -100,7 +100,7 @@ class JivoSession
     /**
      * @return string
      */
-    public function getUserAgent(): string
+    public function getUserAgent(): ?string
     {
         return $this->userAgent;
     }
