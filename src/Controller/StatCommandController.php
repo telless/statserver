@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\JivoAction;
+use App\Entity\LpAction;
 use App\Repository\JivoActionRepository;
+use App\Repository\LpActionRepository;
 use App\Repository\SyncState;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController as DefaultController;
@@ -20,15 +22,18 @@ class StatCommandController extends DefaultController
     private $jivoRepository;
     private $syncState;
     private $logger;
+    private $lpRepository;
 
     public function __construct(
         SerializerInterface $serializer,
         JivoActionRepository $jivoRepository,
+        LpActionRepository $lpRepository,
         SyncState $syncState,
         LoggerInterface $logger
     ) {
         $this->serializer = $serializer;
         $this->jivoRepository = $jivoRepository;
+        $this->lpRepository = $lpRepository;
         $this->syncState = $syncState;
         $this->logger = $logger;
     }
@@ -55,4 +60,25 @@ class StatCommandController extends DefaultController
         return $this->view(['result' => 'ok'], Response::HTTP_OK)->setFormat('json');
     }
 
+    /**
+     * @Rest\View()
+     * @Rest\Post(name="lp_site_save_action", path="/api/stat/lp")
+     * @ParamConverter("actionCommand", converter="fos_rest.request_body")
+     *
+     * @param LpAction $actionCommand
+     * @return View
+     */
+    public function lpSiteSaveAction(LpAction $actionCommand, Request $request)
+    {
+        $this->lpRepository->save($actionCommand);
+        try {
+            $this->syncState->call();
+        } catch (\Exception $e) {
+            $this->logger->critical($e->getMessage(), ['ctxt' => $request->getContent()]);
+
+            return $this->view(['result' => 'failure'], Response::HTTP_OK)->setFormat('json');
+        }
+
+        return $this->view(['result' => 'ok'], Response::HTTP_OK)->setFormat('json');
+    }
 }

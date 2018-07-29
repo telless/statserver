@@ -15,7 +15,7 @@ class JivoAction
      *
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      *
      * @JMS\Type("integer")
      */
