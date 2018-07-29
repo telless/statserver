@@ -73,6 +73,7 @@ class JivoVisitor
      * @ORM\Column(type="json", nullable=true)
      *
      * @JMS\Type("array<string, string>")
+     * @JMS\XmlKeyValuePairs()
      */
     private $social;
 

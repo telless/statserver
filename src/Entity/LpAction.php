@@ -29,6 +29,7 @@ class LpAction
      * @ORM\Column(type="json", nullable=true)
      *
      * @JMS\Type("array<string, string>")
+     * @JMS\XmlKeyValuePairs()
      */
     private $leadData;
 
@@ -40,6 +41,7 @@ class LpAction
      * @ORM\Column(type="json", nullable=true)
      *
      * @JMS\Type("array<string, string>")
+     * @JMS\XmlKeyValuePairs()
      */
     private $metaData;
 
@@ -51,6 +53,7 @@ class LpAction
      * @ORM\Column(type="json", nullable=true)
      *
      * @JMS\Type("array<string, string>")
+     * @JMS\XmlKeyValuePairs()
      */
     private $utmData;
 
